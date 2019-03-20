@@ -2,7 +2,7 @@ pipeline {
     agent {
         dockerfile {
             additionalBuildArgs '--build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g)'
-            args '-u 996 -v /var/lib/jenkins/workspace/install:/var/lib/jenkins/workspace/build-proton/install/'
+            args '-v /var/lib/jenkins/workspace/install:/var/lib/jenkins/workspace/install:z'
         }
     }
 
