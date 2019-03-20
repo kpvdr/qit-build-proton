@@ -12,8 +12,15 @@ rm_dir() {
 }
 
 # Debug for volume mounting
+PWD=`pwd`
+echo "PWD=${PWD}"
+echo
+echo "mount:"
 mount
+echo
+echo "CMAKE_INSTALL_PREFIX:"
 ls -la ${CMAKE_INSTALL_PREFIX}
+touch ${CMAKE_INSTALL_PREFIX}/hello.from.docker
 
 #rm_dir -rf ${PROTON_SRC_DIR}
 #rm_dir ${CMAKE_INSTALL_PREFIX}

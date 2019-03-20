@@ -2,8 +2,7 @@ pipeline {
     agent {
         dockerfile {
             additionalBuildArgs '--build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g)'
-//            args '-v /home/jenkins/.ssh/id_rsa_file_service:/id_rsa_file_service:ro,z -v /etc/pki/ca-trust:/etc/pki/ca-trust:ro,z'
-              args '-v /var/lib/jenkins/workspace/install:/install'
+            args '-v /var/lib/jenkins/workspace/install:/install'
         }
     }
 
