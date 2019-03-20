@@ -12,7 +12,7 @@ for PY_DIR in ${PYTHON_DIR_ARRAY[@]}; do
         error_found=true
     fi
 done
-if [[ ${error_found}=true ]]; then
+if [[ "${error_found}" = true ]]; then
     echo "ERROR: missing library file(s) - exiting with error"
     exit 1
 fi
