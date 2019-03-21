@@ -5,12 +5,10 @@ if [[ -z ${JENKINS_HOME+x} ]]; then
 fi
 echo "JENKINS_HOME=${JENKINS_HOME}"
 
-PWD=`pwd`
 CMAKE_INSTALL_PREFIX="${JENKINS_HOME}/workspace/install"
 echo "CMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}"
 
 PROTON_SRC_DIR="${JENKINS_HOME}/workspace/build-proton/qpid-proton"
-CMAKE_INSTALL_PREFIX="${PROTON_SRC_DIR}/install"
 PROTON_BUILD_DIR="${PROTON_SRC_DIR}/build"
 PROTON_BINDINGS_INSTALL_DIR="${CMAKE_INSTALL_PREFIX}/lib64/proton/bindings"
 
