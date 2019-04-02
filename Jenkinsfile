@@ -6,6 +6,10 @@ pipeline {
         }
     }
 
+    triggers {
+        upstream(upstreamProjects: 'clean-all', threshold: hudson.model.Result.SUCCESS)
+    }
+
     stages {
         stage('Clean') {
             steps {
