@@ -11,6 +11,6 @@ rm_dir() {
     fi
 }
 
-rm_dir -rf ${PROTON_SRC_DIR}
+rm_dir ${PROTON_SRC_DIR}
 rm_dir ${CMAKE_INSTALL_PREFIX}
 rm_dir ${PROTON_BUILD_DIR}
