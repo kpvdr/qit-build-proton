@@ -11,18 +11,20 @@ find_python() {
         echo "find_python(): Incorrect number of arguments"
         exit 1
     fi
+    echo "exec=$1"
     eval $2=`which $1 2> /dev/null`
     if [[ $? == 0 ]]; then
+        echo "$2=$$2"
         eval $3=`$1 --version 2>&1 | sed -e 's/[[:alpha:]|(|[:space:]]//g'`
         local short_py_ver=${PYTHON_VER%.*} # x.y.z -> x.y
-        local py_include_dir=`ls -d /usr/include/python${short_py_ver}* 2> /dev/null`
+        local py_include_dir=`ls -d /usr/include/python${short_py_ver}*` # 2> /dev/null`
         if [[ -d ${py_include_dir} ]]; then
             eval $4=${py_include_dir}
         else
             error=true
             echo "find_python(): ERROR: Python include dir not found"
         fi
-        local py_library=`ls /usr/lib64/libpython${short_py_ver}*.so 2> /dev/null`
+        local py_library=`ls /usr/lib64/libpython${short_py_ver}*.so` # 2> /dev/null`
         if [[ -f ${py_library} ]]; then
             eval $5=${py_library}
         else
