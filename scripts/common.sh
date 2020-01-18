@@ -14,10 +14,13 @@ find_python() {
     echo "exec=$1"
     eval $2=`which $1 2> /dev/null`
     if [[ $? == 0 ]]; then
-        echo "$2=$$2"
+        eval echo "$2=\$$2"
         eval $3=`$1 --version 2>&1 | sed -e 's/[[:alpha:]|(|[:space:]]//g'`
+        eval echo "$3=\$$3"
         local short_py_ver=${PYTHON_VER%.*} # x.y.z -> x.y
+        echo "short_py_ver=${short_py_ver}"
         local py_include_dir=`ls -d /usr/include/python${short_py_ver}*` # 2> /dev/null`
+        echo "py_include_dir=${py_include_dir}"
         if [[ -d ${py_include_dir} ]]; then
             eval $4=${py_include_dir}
         else
@@ -25,6 +28,7 @@ find_python() {
             echo "find_python(): ERROR: Python include dir not found"
         fi
         local py_library=`ls /usr/lib64/libpython${short_py_ver}*.so` # 2> /dev/null`
+        echo "py_library=${py_library}"
         if [[ -f ${py_library} ]]; then
             eval $5=${py_library}
         else
