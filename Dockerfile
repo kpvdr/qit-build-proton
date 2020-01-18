@@ -3,7 +3,7 @@ FROM centos:7
 RUN yum -q -y update && yum -q clean all
 
 RUN yum -q -y install epel-release && \
-    yum -y install git make gcc-c++ cmake swig python python-devel python3-devel epydoc doxygen libuuid-devel openssl-devel cyrus-sasl-devel jsoncpp-devel sudo which && \
+    yum -y install git make gcc-c++ cmake swig python python-devel python-setuptools python3-devel python3-setuptools epydoc doxygen libuuid-devel openssl-devel cyrus-sasl-devel jsoncpp-devel sudo which && \
     yum -q clean all
 
 ARG USER_ID=996
