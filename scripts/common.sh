@@ -12,12 +12,13 @@ find_python() {
         exit 1
     fi
     echo "exec=$1"
-    eval $2=`which $1 2> /dev/null`
+    eval $2=`which $1` # 2> /dev/null`
     if [[ $? == 0 ]]; then
         eval echo "$2=\$$2"
-        eval $3=`$1 --version 2>&1 | sed -e 's/[[:alpha:]|(|[:space:]]//g'`
+        local py_ver=`$1 --version 2>&1 | sed -e 's/[[:alpha:]|(|[:space:]]//g'`
+        eval $3=${py_ver}
         eval echo "$3=\$$3"
-        local short_py_ver=${PYTHON_VER%.*} # x.y.z -> x.y
+        local short_py_ver=${py_ver%.*} # x.y.z -> x.y
         echo "short_py_ver=${short_py_ver}"
         local py_include_dir=`ls -d /usr/include/python${short_py_ver}*` # 2> /dev/null`
         echo "py_include_dir=${py_include_dir}"
